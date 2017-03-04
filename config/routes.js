@@ -10,8 +10,8 @@ router.route('/account')
   .delete(secureRoute, registrations.delete);
 
 router.route('/account/edit')
-  .put(registrations.edit)
-  .post(registrations.update);
+  .put(secureRoute, registrations.edit)
+  .post(secureRoute, registrations.update);
 
 router.route('/user')
   .get(secureRoute, registrations.index);
