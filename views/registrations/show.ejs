@@ -1,5 +1,5 @@
 <h1>My Account</h1>
-<a href="/profile/edit">Edit Account Information</a>
+<a href="/account/edit">Edit Account Information</a>
 
 <img src="<%= user.avatar %>" alt="<%= user.username %>">
 <h4><%= user.username %></h2>
@@ -8,7 +8,7 @@
 <h4><%= user.playlists %></h2>
 
 
-<form method="POST" action="/profile">
+<form method="POST" action="/account">
   <input type="hidden" name="_method" value="DELETE">
   <button>Delete Account</button>
 </form>

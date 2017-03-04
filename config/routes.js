@@ -5,9 +5,16 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
-router.route('/profile')
-  .get(registrations.show, { user });
-  // .post(registrations.create);
+router.route('/account')
+  .get(secureRoute, registrations.show)
+  .delete(secureRoute, registrations.delete);
+
+router.route('/account/edit')
+  .put(registrations.edit)
+  .post(registrations.update);
+
+router.route('/user')
+  .get(secureRoute, registrations.index);
 
 router.route('/register')
   .get(registrations.new)
