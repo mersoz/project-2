@@ -1,5 +1,7 @@
 const User = require('../models/user');
 
+// indexRoute
+
 function newRoute(req, res) {
   return res.render('registrations/new');
 }
@@ -17,7 +19,24 @@ function createRoute(req, res, next) {
     });
 }
 
+// showRoute
+
+
+// editRoute
+
+
+// updateRoute
+
+
+// deleteRoute
+
+
 module.exports = {
+  index: indexRoute,
   new: newRoute,
-  create: createRoute
+  create: createRoute,
+  show: showRoute,
+  edit: editRoute,
+  update: updateRoute,
+  delete: deleteRoute
 };

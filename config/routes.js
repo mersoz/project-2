@@ -5,6 +5,10 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
+router.route('/profile')
+  .get(registrations.show, { user });
+  // .post(registrations.create);
+
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
