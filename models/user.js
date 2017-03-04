@@ -14,10 +14,11 @@ const songSchema = new mongoose.Schema({
 
 const playlistSchema = new mongoose.Schema({
   name: { type: String },
-  createdOn: { type: Date },
-  playedOn: { type: Date },
   songs: [ songSchema ],
-  tags: { type: Array } //can be searched?
+  private: { type: Boolean },
+  tags: { type: Array }, //can be searched?
+  createdOn: { type: Date },
+  playedOn: { type: Date }
 });
 
 const userSchema = new mongoose.Schema({
