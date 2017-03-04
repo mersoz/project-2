@@ -8,7 +8,7 @@ const songSchema = new mongoose.Schema({
   year: { type: Number },
   live: { type: Boolean },
   albumIMG: { type: String },
-  playedOn: { type: String },  //later playlistSchema
+  playedOn: { type: String },  //later timestamp
   addInfo: { type: String }
 });
 
@@ -16,8 +16,8 @@ const playlistSchema = new mongoose.Schema({
   name: { type: String },
   createdOn: { type: String }, //later timestamp
   playedOn: { type: String },   //later timestamp
-  songs: { type: Array },  //array of songSchemas
-  tags: { type: Array } //array of strings -- can be searched?
+  songs: [ songSchema ],
+  tags: { type: Array } //can be searched?
 });
 
 const userSchema = new mongoose.Schema({
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String },
   password: { type: String, required: true },
   avatar: { type: String },
-  playlists: { type: Array } //later playlistSchema
+  playlists: [ playlistSchema ]
 });
 
 
