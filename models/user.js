@@ -18,7 +18,8 @@ const playlistSchema = new mongoose.Schema({
   private: { type: Boolean },
   tags: { type: Array }, //can be searched?
   createdOn: { type: Date },
-  playedOn: { type: Date }
+  playedOn: { type: Date },
+  createdBy: { type: String } //userId
 });
 
 const userSchema = new mongoose.Schema({
@@ -29,11 +30,6 @@ const userSchema = new mongoose.Schema({
   avatar: { type: String },
   playlists: [ playlistSchema ]
 });
-
-
-
-
-
 
 userSchema
   .virtual('passwordConfirmation')

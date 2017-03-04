@@ -13,7 +13,7 @@ router.route('/account/edit')
   .put(secureRoute, registrations.edit)
   .post(secureRoute, registrations.update);
 
-router.route('/user')
+router.route('/user/index')
   .get(secureRoute, registrations.index);
 
 router.route('/register')
@@ -24,6 +24,6 @@ router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
 
-router.all('*', (req,res) => res.notFound());
+router.all('*', (req, res) => res.notFound());
 
 module.exports = router;
