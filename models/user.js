@@ -8,14 +8,14 @@ const songSchema = new mongoose.Schema({
   year: { type: Number },
   live: { type: Boolean },
   albumIMG: { type: String },
-  playedOn: { type: String },  //later timestamp
-  addInfo: { type: String }
+  playedOn: { type: Date },
+  addInfo: { type: Date }
 });
 
 const playlistSchema = new mongoose.Schema({
   name: { type: String },
-  createdOn: { type: String }, //later timestamp
-  playedOn: { type: String },   //later timestamp
+  createdOn: { type: Date },
+  playedOn: { type: Date },
   songs: [ songSchema ],
   tags: { type: Array } //can be searched?
 });
