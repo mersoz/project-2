@@ -1,1 +1,23 @@
 <h1>Edit Account</h1>
+
+<form method="POST" action="/account">
+  <input type="hidden" name="_method" value="PUT">
+
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="<%= user.username %>">
+  </div>
+
+  <div>
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" value="<%= user.name %>">
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea name="description"><%= user.description %></textarea>
+  </div>
+
+  <button>Update</button>
+</form>
+</main>

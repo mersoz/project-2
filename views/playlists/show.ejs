@@ -1,0 +1,16 @@
+<h1>Playlist Details</h1>
+
+<a href="/playlists/<%= playlist.id %>/edit">Edit playlist information</a>
+<a href="/playlists/<%= playlist.id %>/song/new">Add new song</a>
+
+<h2>Playlist name: <%= playlist.name %></h2>
+<p>Private/Public: <%= playlist.private %></p>
+<p>Tags: <%= playlist.tags %></p>
+<p>Created on: <%= playlist.createdOn %></p>
+<p>Last played: <%= playlist.playedOn %></p>
+<p>Created by: <%= playlist.createdBy %></p>
+<%#
+  // coverImage
+  // timestamps
+%>
+<p>Songs: <%= playlist.songs %>

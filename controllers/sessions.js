@@ -21,15 +21,18 @@ function sessionsCreate(req, res, next) {
       req.user = user;
 
       req.flash('success', `Welcome back, ${user.username}!`);
-      res.redirect('/');
+      res.redirect('/account');
     })
     .catch(next);
 }
 
 // Delete session on logout
 function sessionsDelete(req, res) {
+  console.log(`${req.session}`);
+  console.log(`${res}`);
   req.session.regenerate(() => res.redirect('/'));
 }
+
 
 module.exports = {
   new: sessionsNew,

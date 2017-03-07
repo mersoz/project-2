@@ -1,0 +1,14 @@
+<h1>Playlist Index</h1>
+<%#   playlist.show && iterate through list of playlists   %>
+<div>
+  <% playlists.forEach((playlist) => { %>
+    <p>
+      Playlist name:
+      <a href="/playlists/<%= playlist.id %>"><%= playlist.name %></a>
+      - created by:
+      <a href="/users/<%= playlist.createdBy %>"><%= playlist.createdBy %></a>
+    </p>
+
+
+<% }) %>
+</div>

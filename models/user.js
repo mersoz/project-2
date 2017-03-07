@@ -1,34 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const songSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  artist: { type: String, required: true },
-  album: { type: String },
-  year: { type: Number },
-  live: { type: Boolean },
-  albumIMG: { type: String },
-  playedOn: { type: Date },
-  addInfo: { type: Date }
-});
-
-const playlistSchema = new mongoose.Schema({
-  name: { type: String },
-  songs: [ songSchema ],
-  private: { type: Boolean },
-  tags: { type: Array }, //can be searched?
-  createdOn: { type: Date },
-  playedOn: { type: Date },
-  createdBy: { type: String } //userId
-});
-
 const userSchema = new mongoose.Schema({
   name: { type: String },
   username: { type: String, required: true },
   email: { type: String },
   password: { type: String, required: true },
-  avatar: { type: String },
-  playlists: [ playlistSchema ]
+  avatar: { type: String }
 });
 
 userSchema

@@ -1,1 +1,10 @@
 <h1>User Index</h1>
+<div>
+  <% users.forEach((user) => { %>
+    <div>
+      <a href="/user/show/<%= user.id %>">
+        <h4><%= user.username %></h4>
+      </a>
+    </div>
+  <% }) %>
+</div>

@@ -1,28 +1,62 @@
 const router = require('express').Router();
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
+const users = require('../controllers/users');
+const playlists = require('../controllers/playlists');
 const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
+// PLAYLIST ROUTES
+router.route('/playlists')
+  .get(playlists.index);
+
+router.route('/playlists/new')
+  .get(secureRoute, playlists.new)
+  .post(secureRoute, playlists.create);
+
+router.route('/playlists/:id')
+  .get(playlists.show)
+  .put(secureRoute, playlists.update)
+  .delete(secureRoute, playlists.delete);
+
+router.route('/playlists/:id/edit')
+  .get(secureRoute, playlists.edit);
+
+
+  // SONG ROUTES
+router.route('/playlists/:id/song/new')
+    .get(secureRoute, playlists.newSong)
+    .post(secureRoute, playlists.create);
+
+
+  // USER ROUTES
+router.route('/users')
+  .get(secureRoute, registrations.index);
+
 router.route('/account')
   .get(secureRoute, registrations.show)
+  .put(secureRoute, registrations.update)
   .delete(secureRoute, registrations.delete);
 
 router.route('/account/edit')
-  .put(secureRoute, registrations.edit)
-  .post(secureRoute, registrations.update);
+  .get(secureRoute, registrations.edit);
 
-router.route('/user/index')
-  .get(secureRoute, registrations.index);
+//vvv EDIT OUT LATER vvv/
+router.route('/users/:id')
+  .get(users.show);
 
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
 
+// SESSION ROUTES
 router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
+
+router.route('/logout')
+  .get(sessions.delete);
 
 router.all('*', (req, res) => res.notFound());
 

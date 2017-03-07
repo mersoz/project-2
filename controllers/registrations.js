@@ -1,19 +1,19 @@
 const User = require('../models/user');
 
-// Display all users
+// Display all users -- WORKS
 function indexRoute(req, res, next) {
   User
     .find()
-    .then(() => res.render('registrations/index'))
+    .then((users) => res.render('registrations/index', { users }))
     .catch(next);
 }
 
-// Register form
+// Register form -- WORKS
 function newRoute(req, res) {
   return res.render('registrations/new');
 }
 
-// Create new user
+// Create new user -- WORKS
 function createRoute(req, res, next) {
   User
     .create(req.body)
@@ -28,23 +28,9 @@ function createRoute(req, res, next) {
 }
 
 // Show user account
-function showRoute(req, res){
-  return res.render('registrations/show');
+function showRoute(req, res) {
+  res.render('registrations/show');
 }
-  // User
-  //   .find()
-  //   .exec()
-  //   .then()
-  //   .catch()
-  //     next();
-
-// .findById(req.params.id)
-// .then((film) => {
-//   if(!film) return res.notFound();
-//   res.render('films/show', { film });
-// })
-// .catch(next);
-
 
 // Account edit form
 function editRoute(req, res){
@@ -52,29 +38,30 @@ function editRoute(req, res){
 }
 
 // Edit account information
-function updateRoute(){
-
+function updateRoute(req, res, next) {
+  User
+    .findById(req.user.id) // instead of req.params.id
+    .then((user) => {
+      console.log(`User: ${user}`); // NULL
+      if(!user) return res.notFound();
+      for(const field in req.body) {
+        user[field] = req.body[field];
+      }
+      return user.save();
+    })
+    .then(() => res.redirect(`/account`))
+    .catch(next);
 }
 
 // Delete account
-function deleteRoute(req, res) {
-  User
-    .findById(req.params.id)
-    .then((user) => {
-      if(!user) return res.notFound();
-      return user.remove();
+function deleteRoute(req, res, next) {
+  req.user
+    .remove()
+    .then(() => {
+      req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
     })
-    .then(() => res.redirect('/'));
+    .catch(next);
 }
-
-
-  // req.user
-  //   .remove()
-  //   .then(() => {
-  //     req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
-  //   })
-  //   .catch(next);
-
 
 module.exports = {
   index: indexRoute,
