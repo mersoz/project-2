@@ -8,7 +8,10 @@ const songSchema = new mongoose.Schema({
   live: { type: Boolean },
   albumIMG: { type: String },
   playedOn: { type: Date },
-  addInfo: { type: Date }
+  addInfo: { type: String },
+  url: { type: String }
+}, {
+  timestamps: true
 });
 
 const playlistSchema = new mongoose.Schema({
@@ -22,6 +25,8 @@ const playlistSchema = new mongoose.Schema({
   createdOn: { type: Date },
   playedOn: { type: Date },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Playlist', playlistSchema);

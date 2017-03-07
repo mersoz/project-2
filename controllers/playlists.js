@@ -3,6 +3,7 @@ const Playlist = require('../models/playlist');
 function indexRoute(req, res, next) {
   Playlist
     .find()
+    .populate('createdBy playlists.createdBy')
     .then((playlists) => {
       res.render('playlists/index', { playlists });
     })
@@ -15,10 +16,9 @@ function newRoute(req, res) {
 
 function createRoute(req, res, next) {
   req.body.createdBy = req.user;
-
   Playlist
   .create(req.body)
-  .then(() => res.redirect('/'))
+  .then(() => res.redirect('/playlists'))
   .catch(next);
 }
 
@@ -41,7 +41,7 @@ function editRoute(req, res) {
 
 function updateRoute(req, res, next) {
   Playlist
-    .findById(req.params.id) // instead of req.params.id
+    .findById(req.params.id)
     .then((playlist) => {
       console.log(`Playlist: ${playlist}`); // NULL
       if(!playlist) return res.notFound();
@@ -58,22 +58,89 @@ function updateRoute(req, res, next) {
 function deleteRoute(req, res, next) {
   Playlist
     .findById(req.params.id)
-    .exec()
-    .then((user) => {
-      if(!user) return res.notFound();
-      // Get the embedded record by it's id
-      const playlist = user.playlists.id(req.params.playlistId);
+    .then((playlist) => {
+      if(!playlist) return res.notFound();
       playlist.remove();
-
-      return user.save();
     })
-    .then((user) => res.redirect(`/users/${user.id}`))
+    .then(() => res.redirect(`/playlists`))
     .catch(next);
 }
 
-function newSongRoute(req, res) {
-  return res.render('songs/new');
+//////////////////  SONGS  //////////////////
+function newSongRoute(req, res, next) {
+  Playlist
+    .findById(req.params.id)
+    .then((playlist) => {
+      if(!playlist) return res.notFound();
+      res.render('songs/new', { playlist });
+    })
+    .catch(next);
 }
+// Creates new song inside playlist without url
+
+function createSongRoute(req, res, next) {
+  req.body.createdBy = req.user;
+
+  Playlist
+    .findById(req.params.id)
+    .then((playlist) => {
+      if(!playlist) return res.notFound();
+      playlist.songs.push(req.body);
+      return playlist.save();
+    })
+    .then((playlist) => res.redirect(`/playlists/${playlist.id}`))
+    .catch(next);
+  // Search API results
+}
+
+// function showSongRoute() {
+//   Playlist
+//     .findById(req.params.id)
+//     .then((playlist) => {
+//       res.render('playlists/show', { playlist });
+//     })
+//     .catch(next);
+// }
+
+function editSongRoute(req, res) {
+  Playlist
+  .findById(req.params.id)
+  .then((playlist) => {
+    if(!playlist) return res.notFound();
+    const song = playlist.songs.id(req.params.songId);
+    return res.render('songs/edit', { playlist, song });
+  });
+}
+
+function updateSongRoute(req, res, next) {
+  Playlist
+    .findById(req.params.id)
+    .then((playlist) => {
+      if(!playlist) return res.notFound();
+      const song = playlist.songs.id(req.params.songId);
+      for(const field in req.body) {
+        song[field] = req.body[field];
+      }
+      return playlist.save();
+    })
+    .then((playlist) => res.redirect(`/playlists/${playlist.id}`))
+    .catch(next);
+
+}
+
+function deleteSongRoute(req, res, next) {
+  Playlist
+    .findById(req.params.id)
+    .then((playlist) => {
+      if(!playlist) return res.notFound();
+      const song = playlist.songs.id(req.params.songId);
+      song.remove();
+      return playlist.save();
+    })
+    .then((playlist) => res.redirect(`/playlists/${playlist.id}`))
+    .catch(next);
+}
+
 
 module.exports = {
   index: indexRoute,
@@ -84,5 +151,10 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
 
-  newSong: newSongRoute
+  newSong: newSongRoute,
+  createSong: createSongRoute,
+  // showSong: showSongRoute,
+  editSong: editSongRoute,
+  updateSong: updateSongRoute,
+  deleteSong: deleteSongRoute
 };

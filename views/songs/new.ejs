@@ -1,3 +1,30 @@
 <h1>Add new song</h1>
 
-<p>Form</p>
+<form method="POST" action="/playlists/<%= playlist.id %>/songs/new">
+  <div>
+    <label for="name">Song name: </label>
+    <input type="text" name="name" id="name">
+  </div>
+  <div>
+    <label for="artist">Performer: </label>
+    <input type="text" name="artist" id="artist">
+  </div>
+  <div>
+    <label for="album">Album name: </label>
+    <input type="text" name="album" id="album">
+  </div>
+  <div>
+    <label for="year">Year: </label>
+    <input type="text" name="year" id="year">
+  </div>
+  <div>
+    <label for="live">Live? </label>
+    <input type="checkbox" name="live" id="live">
+  </div>
+  <div>
+    <label for="addInfo">Additional info: </label>
+    <input type="text" name="addInfo" id="addInfo">
+  </div>
+
+  <button>Add song to playlist and search APIs for URL</button>
+</form>

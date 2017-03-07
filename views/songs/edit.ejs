@@ -1,0 +1,17 @@
+<h1>Edit Song</h1>
+
+<form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>">
+  <input type="hidden" name="_method" value="PUT">
+
+  <div>
+    <label for="name">Track name:</label>
+    <input type="text" name="name" id="name" value="<%= song.name %>">
+  </div>
+
+  <div>
+    <label for="artist">Artist</label>
+    <input type="text" name="artist" id="artist" value="<%= song.artist %>">
+  </div>
+
+  <button>Update song</button>
+</form>

@@ -1,0 +1,12 @@
+<h1>Song URL Search Results</h1>
+
+<form method="POST" action="/playlists/<%= playlist.id %>/songs/<% song.id %>">
+  <input type="hidden" name="_method" value="PUT">
+
+    <div>
+      <label for="url">URL to song</label>
+      <input type="text" name="url" id="url" value="<%= song.id %>">
+    </div>
+
+  <button>Add song URL</button>
+</form>
