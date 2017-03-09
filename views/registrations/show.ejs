@@ -1,7 +1,10 @@
 <h1>My Account</h1>
+<form method="POST" action="/account" class="oneButtonForm">
+  <input type="hidden" name="_method" value="DELETE">
+  <button class="topButton delete">Delete Account</button>
+</form>
 
-<a href="/account/edit">Edit Account Information</a>
-<a href="/playlists/new">Create New Playlist</a>
+<a href="/account/edit"><button class="topButton">Edit Account Information</button></a>
 
 <h4>Username: <%= user.username %></h4>
 <h4>Email: <%= user.email %></h4>
@@ -10,10 +13,30 @@
 <%# <h4></%= user.playlists %/></h4>%>
 <%# embed playlist.show %>
 
-<form method="POST" action="/account">
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Delete Account</button>
-</form>
+<a href="/playlists/new"><button class="topButton">Create New Playlist</button></a>
+
+<ul>
+  <%# get all playlists associated with the user id y%>
+  <% playlists.forEach((playlist) => { %>
+
+    <%# <li></%= playlist %/></li> %>
+
+    <li><p><%= playlist.name %>
+       (<%= playlist.songs.length %>)</p>
+
+      <a href="/playlists/<%= playlist.id %>/playlists/<%= playlist.id %>/edit">
+        <button class="miniButton">Edit playlist</button>
+      </a>
+
+      <form method="POST" action="/playlists/<%= playlist.id %>/playlists/<%= playlist.id %>" class="oneButtonForm">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="miniButton">Remove playlist</button>
+      </form>
+
+    </li>
+
+  <% }) %>
+</ul>
 
 <div class="temp">
   <p><%= user %></p>

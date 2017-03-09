@@ -1,0 +1,27 @@
+<h1>Playing: <%= playlist.name %></h1>
+
+<div class="songContainer">
+  <ul>
+    <% playlist.songs.forEach((song) => { %>
+
+      <%# <li></%= song %/></li> %>
+
+      <li><p><%= song.name %>
+        - <%= song.artist %></p>
+
+        <a href="/playlists/<%= playlist.id %>/songs/<%= song.id %>/edit">
+          <button class="miniButton">Edit song</button>
+        </a>
+
+        <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>" class="oneButtonForm">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="miniButton">Remove song</button>
+        </form>
+        <div class="player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= song.url %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </li>
+
+    <% }) %>
+  </ul>
+</div>

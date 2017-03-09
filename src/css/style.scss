@@ -11,18 +11,58 @@ $white: #fff;
   padding: 0;
   line-height: 30px;
   color: $purple;
+  box-sizing: border-box;
+
 }
 
 body {
   font-family: sans-serif;
-  background: url("/assets/images/cassette.jpg");
+  background: url("/assets/images/cassette_smallcopy.jpg");
   background-color: $yellow;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  button {
+    background-color: $blue;
+    color: $white;
+    border: outset 5px $blue;
+  }
+
+  button.topButton {
+    padding: 5px 15px;
+    margin: 0 5px 10px 0;
+    letter-spacing: 1px;
+    font-size: 15px;
+  }
+
+  button.center {
+    // text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $red;
+    border: outset 5px $red;
+
+  }
+  button.miniButton {
+    border: none;
+    color: $red;
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
   form.oneButtonForm {
     display: inline-block;
+    button.delete {
+      background-color: $red;
+      border: outset 5px $red;
+    }
   }
   nav {
     ul {
@@ -41,9 +81,13 @@ body {
 
         a {
           color: $white;
-          text-decoration: none;
+          // text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
         }
       }
+
     }
   }
 
@@ -65,6 +109,27 @@ body {
 
     form {
       display: block;
+      // line-height: 100px;
+      div {
+        margin-bottom: 5px;
+        label {
+          width: 15%;
+          display: inline-block;
+          text-align: right;
+          // background: white;
+          // border: solid 1px black;
+        }
+        input {
+          width: 15%;
+          border: none;
+          // background-color: $blue;
+        }
+      }
+      button.inFormButton {
+        width: 150px;
+        width: 15%;
+
+      }
     }
 
     div.results {
@@ -75,20 +140,26 @@ body {
       overflow: hidden;
       div {
         width: 100%;
-        background-color: rgba(255, 255, 255, .5);
+        box-sizing: content-box;
+
         border-top: solid 3px $blue;
         border-bottom: solid 3px $blue;
         margin-bottom: 5px;
-        box-sizing: content-box;
+
+        background-color: rgba(255, 255, 255, .5);
         img {
           float: left;
           margin-right: 10px;
-
           // display: block;
         }
         h4, small {
           float: right;
           width: 50%;
+        }
+        button {
+          float: right;
+          margin-right: 10%;
+          margin-top: 5%;
         }
       }
     }
@@ -99,20 +170,54 @@ body {
     div.playlistFolder {
       // box-sizing: padding-box;
       background-color: rgba(255, 255, 255, .5);
-      border: solid 1px blue;
+      border: solid 1px $blue;
       width: 26%;
       float: left;
       margin: 2%;
-      padding: 10px;
+      // padding: 30px 0;
+      position: relative;
       small {
+        clear: both;
         float: right;
       }
       a {
-        text-decoration: none;
+        text-align: center;
+        margin: 0 auto;
+        padding: 5px;
+        // box-sizing: border-box;
+        // width: 100%;
+        display: inline-block;
+        // text-decoration: none;
       }
       a.playlistFolderTitle {
+        text-align: center;
+        margin: 0 auto;
+        padding: 5px;
+        // box-sizing: border-box;
+        width: 100%;
+        display: inline-block;
+        // text-decoration: none;
         font-weight: bold;
-        text-transform: capitalize;;
+        text-transform: capitalize;
+
+      }
+    }
+
+    div.songContainer {
+      ul {
+        width: 70%;
+        li:not(:last-child) {
+          border-bottom: solid 1px $blue;
+        }
+        li {
+          p {
+            display: inline-block;
+            width: 50%;
+          }
+          a, form {
+            float: right;
+          }
+        }
       }
     }
   }

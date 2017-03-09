@@ -15,15 +15,36 @@ $(() => {
   // add event listener to all <div> children of results
 
 // Attach a delegated event handler
-  $results.on( 'click', '*', function( event ) {
-    event.preventDefault();
-    console.log( $( this ).text() );
+  $results.on( 'click', 'button.chooseURL', function(e) {
+    e.preventDefault();
+    console.log( $(e.target).data('youtubeurl'));
+    const youtubeurl = $(e.target).data('youtubeurl');
+    $('input[name="url"]').val(youtubeurl);
   });
 
-  $('#search').on('submit', (e) => {
+
+  $('#search').on('click', (e) => {
     e.preventDefault();
 
-    const q = $('[name=q]').val();
+    const $searchFields = $('.search-fields').find('input[type="text"], input[type="checkbox"]:checked');
+    const queries = [];
+
+    $.each($searchFields, (index, input) => {
+      const $input = $(input);
+      if ($input.val() !== '') {
+        console.log($input.val());
+        queries.push($input.val());
+      }
+    });
+
+    const q = queries.join(' ');
+
+
+    // const q = $('[name=q]').val();
+    // const q = $('[name=q]').parent().val();
+
+    // const q = $('[name=name]').val();
+
     console.log(q);
 
     gapi.client.youtube.search.list({
@@ -35,13 +56,6 @@ $(() => {
       res.items.forEach((video) => {
         console.log(video);
 
-        // things you can do with video.snippet
-        // channelTitle - check for VEVO
-        // description - display
-        // publishedAt - check for new vidoes only?
-        // thumbnails.high.url
-
-
         $results.append(`
           <div>
             <p class="hidden"></p>
@@ -49,6 +63,7 @@ $(() => {
 
             <h4>${video.snippet.title}</h4>
             <small>-posted by ${video.snippet.channelTitle}</small>
+            <button type="button" data-youtubeurl="${video.id.videoId}" class="chooseURL">Add this to Playlist</button>
           </div>
         `);
           // <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe>

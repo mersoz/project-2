@@ -22,6 +22,9 @@ router.route('/playlists/:id')
   .put(secureRoute, playlists.update)
   .delete(secureRoute, playlists.delete);
 
+router.route('/playlists/:id/play')
+  .get(playlists.play);
+
 router.route('/playlists/:id/edit')
   .get(secureRoute, playlists.edit);
 

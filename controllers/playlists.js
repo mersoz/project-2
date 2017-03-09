@@ -67,6 +67,16 @@ function deleteRoute(req, res, next) {
     .catch(next);
 }
 
+function playRoute(req, res, next) {
+  Playlist
+    .findById(req.params.id)
+    .populate('createdBy playlists.createdBy')
+    .then((playlist) => {
+      res.render('playlists/play', { playlist });
+    })
+    .catch(next);
+}
+
 //////////////////  SONGS  //////////////////
 function newSongRoute(req, res, next) {
   Playlist
@@ -151,6 +161,7 @@ module.exports = {
   edit: editRoute,
   update: updateRoute,
   delete: deleteRoute,
+  play: playRoute,
 
   newSong: newSongRoute,
   createSong: createSongRoute,
