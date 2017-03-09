@@ -1,25 +1,14 @@
 <nav>
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/users">Users Index</a>
-      <%# <ul>
-        <li><a href="/users/show">View User</a></li>
-         <li><a href="/user/</%= user.id %/>">View User</a></li>
-        Error: Can't set headers after they are sent.
-      </ul>%>
-    </li>
-    <li><a href="/playlists">Playlists Index</a>
-      <ul>
-        <li><a href="/playlists/new/">New Playlist</a></li>
-      </ul>
-    </li>
+    <li><a href="/search">Search</a></li>
+    <li><a href="/users">Users Index</a></li>
+    <li><a href="/playlists">Playlists Index</a></li>
+    <li><a href="/playlists/new/">New Playlist</a></li>
 
     <% if(locals.isAuthenticated) { %>
-      <li><a href="/account">My Account</a>
-      <ul>
+      <li><a href="/account">My Account</a></li>
       <li><a href="/account/edit">Edit Account</a></li>
-      </ul>
-      </li>
       <li><a href="/logout">Logout</a></li>
     <% } else { %>
       <li><a href="/login">Login</a></li>
@@ -28,3 +17,14 @@
 
   </ul>
 </nav>
+
+
+
+
+
+
+<%# <ul>
+<li><a href="/users/show">View User</a></li>
+<li><a href="/user/</%= user.id %/>">View User</a></li>
+Error: Can't set headers after they are sent.
+</ul>%>

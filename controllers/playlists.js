@@ -25,6 +25,7 @@ function createRoute(req, res, next) {
 function showRoute(req, res, next) {
   Playlist
     .findById(req.params.id)
+    .populate('createdBy playlists.createdBy')
     .then((playlist) => {
       res.render('playlists/show', { playlist });
     })

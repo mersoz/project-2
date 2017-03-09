@@ -2,13 +2,12 @@
 <%#   playlist.show && iterate through list of playlists   %>
 <div>
   <% playlists.forEach((playlist) => { %>
-    <p>
-      Playlist name:
-      <a href="/playlists/<%= playlist.id %>"><%= playlist.name %></a>
-      - created by:
-      <a href="/users/<%= playlist.createdBy %>"><%= playlist.createdBy.username %></a>
-    </p>
-
-
+    <div class="playlistFolder">
+        <a href="/playlists/<%= playlist.id %>" class='playlistFolderTitle'>
+          <%= playlist.name %>
+        </a><br>
+        <small>created by: <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
+        </small>
+    </div>
 <% }) %>
 </div>

@@ -7,6 +7,8 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
+router.get('/search', (req, res) => res.render('songs/search'));
+
 ////////  PLAYLIST ROUTES  ////////
 router.route('/playlists')
   .get(playlists.index);

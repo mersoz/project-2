@@ -3,22 +3,26 @@
 <a href="/playlists/<%= playlist.id %>/edit">Edit playlist information</a>
 <a href="/playlists/<%= playlist.id %>/songs/new">Add new song</a>
 
-<form method="POST" action="/playlists/<%= playlist.id %>">
+<form method="POST" action="/playlists/<%= playlist.id %>" class="oneButtonForm">
   <input type="hidden" name="_method" value="DELETE">
   <button>Delete Playlist</button>
 </form>
-<h2>Playlist name: <%= playlist.name %></h2>
+<h2><%= playlist.name %></h2>
 <p>Num of songs: <%= playlist.songs.length %></p>
-<p>Private/Public: <%= playlist.private %></p>
+<p>Private? <%= playlist.private %></p>
 <p>Tags: <%= playlist.tags %></p>
-<p>Created on: <%= playlist.createdOn %></p>
-<p>Last played: <%= playlist.playedOn %></p>
-<p>Created by: <%= playlist.createdBy %></p>
+<p>Created on: <%= playlist.createdAt %></p>
+<p>Last edited: <%= playlist.updatedAt %></p>
+<p>
+  Created by: <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
+</p>
 <%#
   // coverImage
   // timestamps
 %>
-<div>Songs
+<br>
+<h4>Songs</h4>
+<div>
   <ul>
     <% playlist.songs.forEach((song) => { %>
 
@@ -31,7 +35,7 @@
           Edit song
         </a>
 
-        <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>">
+        <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>" class="oneButtonForm">
           <input type="hidden" name="_method" value="DELETE">
           <button>Remove song</button>
         </form>
