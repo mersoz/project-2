@@ -1,6 +1,6 @@
 'use strict';
 
-/* global gapi */
+/* global gapi, YT */
 console.log('JS loaded');
 
 function gapiReady() {
@@ -8,6 +8,37 @@ function gapiReady() {
     gapi.client.setApiKey('AIzaSyD6j30cRV6V92y2VRMWjIB-lxxO6e-hp9k');
   });
 }
+
+// var youtubePlayer;
+// var player;
+// const x = ['n95eekfFZZg', 'sXYa_qklKPc', 'THCj2AJuNVE'];
+// let videoIndex = 0;
+//
+// function onYouTubeIframeAPIReady() {
+//   player = new YT.Player('player', {
+//   // youtubePlayer = new YT.Player('player', {
+//     height: '390',
+//     width: '640',
+//     videoId: x[videoIndex],
+//     events: {
+//       'onReady': onPlayerReady
+//       ,
+//       'onStateChange': onPlayerStateChange
+//     }
+//   });
+// }
+//
+//
+// function onPlayerReady(event) {
+//   event.target.playVideoAt(0);
+// }
+//
+// function onPlayerStateChange(event) {
+//   if (event.data === YT.PlayerState.ENDED) {
+//     // load next video in playlist
+//     videoIndex ++;
+//   }
+// }
 
 $(function () {
 

@@ -2,21 +2,27 @@
 
 <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>">
   <input type="hidden" name="_method" value="PUT">
+  <div class="search-fields">
 
+    <div>
+      <label for="name">Track name:</label>
+      <input type="text" name="name" id="name" value="<%= song.name %>">
+    </div>
+
+    <div>
+      <label for="artist">Artist</label>
+      <input type="text" name="artist" id="artist" value="<%= song.artist %>">
+    </div>
+  </div>
+  
   <div>
-    <label for="name">Track name:</label>
-    <input type="text" name="name" id="name" value="<%= song.name %>">
+    <label for="youtube">Youtube URL</label>
+    <input type="text" name="url"  id="url" value="<%= song.url %>">
+    <button type="button" id="search">Search Youtube</button>
   </div>
 
-  <div>
-    <label for="artist">Artist</label>
-    <input type="text" name="artist" id="artist" value="<%= song.artist %>">
-  </div>
+  <div class="results"></div>
 
-  <div>
-    <label for="youtubeURL">Youtube URL</label>
-    <input type="text" name="youtubeURL" id="youtubeURL" value="<%= song.url %>">
-  </div>
 
   <button>Update song</button>
 </form>

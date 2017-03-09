@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Playlist = require('../models/playlist');
 
 // Display all users -- WORKS
 function indexRoute(req, res, next) {
@@ -28,8 +29,12 @@ function createRoute(req, res, next) {
 }
 
 // Show user account
-function showRoute(req, res) {
-  res.render('registrations/show');
+function showRoute(req, res, next) {
+  Playlist.find({ createdBy: req.user.id })
+    .then((playlists) => {
+      res.render('registrations/show', { playlists });
+    })
+    .catch(next);
 }
 
 // Account edit form

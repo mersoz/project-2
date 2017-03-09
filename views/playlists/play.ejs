@@ -1,5 +1,13 @@
 <h1>Playing: <%= playlist.name %></h1>
 
+<%# <div id="player">Player goes here</div>%>
+<% var songList = []; %>
+<% playlist.songs.forEach((song) => { %>
+  <% songList.push(song.url); %>
+<% }); %>
+<%= songList %>
+<iframe width="560" height="315" src="https://www.youtube.com/embed?playlist=<%= songList %>" frameborder="0" allowfullscreen></iframe>
+
 <div class="songContainer">
   <ul>
     <% playlist.songs.forEach((song) => { %>
@@ -17,9 +25,12 @@
           <input type="hidden" name="_method" value="DELETE">
           <button class="miniButton">Remove song</button>
         </form>
-        <div class="player">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= song.url %>" frameborder="0" allowfullscreen></iframe>
-        </div>
+
+        <%#
+        // <div class="player">
+        // <iframe width="560" height="315" src="https://www.youtube.com/embed/</%= song.url %/>" frameborder="0" allowfullscreen></iframe>
+        // </div>
+        %>
       </li>
 
     <% }) %>
