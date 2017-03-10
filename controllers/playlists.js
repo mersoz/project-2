@@ -63,7 +63,7 @@ function deleteRoute(req, res, next) {
       if(!playlist) return res.notFound();
       playlist.remove();
     })
-    .then(() => res.redirect(`/playlists`))
+    .then(() => res.redirect(`/account`))
     .catch(next);
 }
 

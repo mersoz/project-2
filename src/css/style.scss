@@ -4,25 +4,72 @@ $green: #138b45;
 $purple: #45138b;
 $red: #8b131d;
 $blue: #13598b;
+$bg-white: #c9d7ca;
 $white: #fff;
 
 * { //get rid of whitespace
   margin: 0;
   padding: 0;
-  line-height: 30px;
+  // line-height: 30px;
   color: $purple;
   box-sizing: border-box;
+}
 
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }
 
 body {
   font-family: sans-serif;
   background: url("/assets/images/cassette_smallcopy.jpg");
-  background-color: $yellow;
+  background-color: $bg-white;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  nav {
+    font-family: 'Josefin Slab';
+    ul {
+      background-color: $blue;
+      list-style-type: none;
+      margin: 0;
+      padding-top: 5px;
+      // padding: 13px 0 10px 0;
+      font-size: 0; //get rid of space between li elements
+      span {
+        display: inline-block;
+      }
+      .floatRight {
+        float: right;
+      }
+      .floatLeft {
+        float: left;
+      }
+      li {
+        padding: 10px;
+        display: inline-block;
+        font-size: 35px; //fall back for old browsers
+        font-size: 3vw; //font size adjustes with screen width
+        // padding: 0 10px;
+        // letter-spacing: 2px;
+        // border: solid 1px black;
+        a {
+          color: $white;
+          img.navLogo {
+            height: 2.5vw;
+          }
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 
   button {
     background-color: $blue;
@@ -64,32 +111,6 @@ body {
       border: outset 5px $red;
     }
   }
-  nav {
-    ul {
-      background-color: $blue;
-      list-style-type: none;
-      margin: 0;
-      text-align: center;
-      font-size: 0; //get rid of space between li elements
-
-      li {
-        display: inline-block;
-        padding: 15px 1%;
-        font-size: 25px; //fall back for old browsers
-        font-size: 2vw; //font size adjustes with screen width
-        // border: solid 1px black;
-
-        a {
-          color: $white;
-          // text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-
-    }
-  }
 
   main {
     width: 800px;
@@ -101,8 +122,10 @@ body {
     // word-wrap: break-word; //for long strings
 
     h1 {
-      font-size: 35px;
+      font-size: 40px;
       margin-bottom: 20px;
+
+      font-family: 'Monoton';
       // display: block;
       // overflow: hidden;
     }
@@ -165,17 +188,23 @@ body {
     }
     div.results * {
       display: inline-block;
-      // border: solid 1px black;
+    }
+    // border: solid 1px black;
+    div.playlistFolder:nth-child(3n+2) {
+      margin: 0 2%;
     }
     div.playlistFolder {
-      // box-sizing: padding-box;
-      background-color: rgba(255, 255, 255, .5);
-      border: solid 1px $blue;
-      width: 26%;
+      box-sizing: border-box;
+      width: 250px;
+
+      // width: 32%;
       float: left;
-      margin: 2%;
-      // padding: 30px 0;
       position: relative;
+      margin-bottom: 2%;
+      border: solid 1px $blue;
+      background-color: rgba(255, 255, 255, .8);
+      // height: 80px;
+      // padding: 30px 0;
       small {
         clear: both;
         float: right;
@@ -193,6 +222,7 @@ body {
         text-align: center;
         margin: 0 auto;
         padding: 5px;
+        border-bottom: 1px solid $purple;
         // box-sizing: border-box;
         width: 100%;
         display: inline-block;
@@ -248,10 +278,26 @@ body {
     }
     main {
       // padding: 240px;
-      // h1 {
-      //   padding: 20px;
-      //   text-align: center;
+      // border: 1px solid black;
+      h1 {
+        padding: 0 20px;
+        text-align: center;
+      }
+      width: 90%;
+      // margin: 0 auto;
+      div.playlistFolder:nth-child(n) {
+        width: 300px;
+        margin: 0 3% 3% 3%;
+      }
+      // div.playlistFolder:nth-child(3n+2) {
+      //   // margin: 0;
+      //   // background-color: red;
       // }
+      // div.playlistFolder:nth-child(2n+1) {
+      //   // background-color: red;
+      //   // margin-right: 5%;
+      // }
+
     }
   // }
   // button, input, textarea {

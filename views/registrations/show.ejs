@@ -24,11 +24,11 @@
     <li><p><%= playlist.name %>
        (<%= playlist.songs.length %>)</p>
 
-      <a href="/playlists/<%= playlist.id %>/playlists/<%= playlist.id %>/edit">
+      <a href="/playlists/<%= playlist.id %>/edit">
         <button class="miniButton">Edit playlist</button>
       </a>
 
-      <form method="POST" action="/playlists/<%= playlist.id %>/playlists/<%= playlist.id %>" class="oneButtonForm">
+      <form method="POST" action="/playlists/<%= playlist.id %>" class="oneButtonForm">
         <input type="hidden" name="_method" value="DELETE">
         <button class="miniButton">Remove playlist</button>
       </form>
@@ -39,5 +39,5 @@
 </ul>
 
 <div class="temp">
-  <p><%= user %></p>
+  <%# <p></%= user %/></p>%>
 </div>
