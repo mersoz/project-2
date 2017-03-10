@@ -32,12 +32,13 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
-function editRoute(req, res) {
+function editRoute(req, res, next) {
   Playlist
   .findById(req.params.id)
   .then((playlist) => {
     return res.render('playlists/edit', { playlist });
-  });
+  })
+  .catch(next);
 }
 
 function updateRoute(req, res, next) {
@@ -113,14 +114,15 @@ function createSongRoute(req, res, next) {
 //     .catch(next);
 // }
 
-function editSongRoute(req, res) {
+function editSongRoute(req, res, next) {
   Playlist
   .findById(req.params.id)
   .then((playlist) => {
     if(!playlist) return res.notFound();
     const song = playlist.songs.id(req.params.songId);
     return res.render('songs/edit', { playlist, song });
-  });
+  })
+  .catch(next);
 }
 
 function updateSongRoute(req, res, next) {
