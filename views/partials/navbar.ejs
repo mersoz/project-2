@@ -1,14 +1,15 @@
 <nav>
   <ul class="clearfix">
     <span class="floatLeft">
-      <li><a href="/"><img src="/assets/images/musr-logo.png" class="navLogo" alt="logo"></a></li>
-      <%# <li><a href="/search">Search</a></li>%>
+      <li class="navLogo">
+        <a href="/">
+          <img src="/assets/images/musr-logo.png" alt="logo">
+        </a>
+      </li>
       <% if(locals.isAuthenticated) { %>
         <li><a href="/users">Users</a></li>
       <% } %>
-
       <li><a href="/playlists">Playlists</a></li>
-      <%# <li><a href="/playlists/new/">New Playlist</a></li>%>
     </span>
 
     <span class="floatRight">

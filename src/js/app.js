@@ -1,5 +1,30 @@
 /* global gapi, YT */
 console.log('JS loaded');
+const windowWidth = $( window ).width();
+console.log(windowWidth);
+
+// $( window ).resize(() => {
+//   const windowWidthDif = (windowWidth - $( window ).width())/5;
+//   console.log(windowWidthDif);
+//   let h1MarginTop = $( 'h1' ).css('margin-top');
+//   let asideMarginTop = $( 'aside' ).css('margin-top');
+//
+//   // el.css('margin-left',marginRightg+'px');
+//   asideMarginTop = Number(asideMarginTop.replace(/[^0-9.]/g, ''));
+//   h1MarginTop = Number(h1MarginTop.replace(/[^0-9.]/g, ''));
+//   // console.log(`top morgin: ${marginTop}`);
+//   var newAsideMarginTop = asideMarginTop + windowWidthDif;
+//   // console.log(`top morgin: ${marginTop}`);
+//   var newH1MarginTop = h1MarginTop + windowWidthDif;
+//   // console.log(`new margin top: ${newMarginTop}`);
+//
+//
+//   $( 'h1' ).css('margin-top', newH1MarginTop+'px');
+//   $( 'aside' ).css('margin-top', newAsideMarginTop+'px');
+//   // $( 'aside' ).css('margin-top', newMarginTop+'px');
+//
+//
+// });
 
 function gapiReady() {
   gapi.client.load('youtube', 'v3')
@@ -44,6 +69,7 @@ $(() => {
   const $results = $('.results');
 
   // add event listener to all <div> children of results
+
 
 // Attach a delegated event handler
   $results.on( 'click', 'button.chooseURL', function(e) {

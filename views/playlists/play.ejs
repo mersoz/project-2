@@ -1,13 +1,15 @@
-<h1>Playing: <%= playlist.name %></h1>
+<h1><%= playlist.name %></h1>
 
-<%# <div id="player">Player goes here</div>%>
 <% var songList = []; %>
 <% playlist.songs.forEach((song) => { %>
   <% songList.push(song.url); %>
 <% }); %>
-<iframe width="560" height="315" src="https://www.youtube.com/embed?playlist=<%= songList %>" frameborder="0" allowfullscreen></iframe>
 
-<div class="songContainer">
+<aside>
+  <iframe src="https://www.youtube.com/embed?playlist=</%= songList %/>" frameborder="0" allowfullscreen></iframe>
+</aside>
+
+<div class="listContainer">
   <ul>
     <% playlist.songs.forEach((song) => { %>
 
