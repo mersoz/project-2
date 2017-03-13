@@ -12,15 +12,19 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
   <body>
-    <% include ./partials/navbar %>
-    <% for(const type in messages) { %>
-      <div class="<%= type %>">
-        <h5><%= messages[type] %></h5>
-      </div>
-    <% } %>
+    <header>
+      <% include ./partials/navbar %>
+      <% for(const type in messages) { %>
+        <div class="message <%= type %>">
+          <h5><%= messages[type] %></h5>
+        </div>
+      <% } %>
+    </header>
     <main>
       <%- body %>
 
     </main>
+    <footer>
+    </footer>
   </body>
 </html>

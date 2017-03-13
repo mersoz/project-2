@@ -29,68 +29,73 @@ $viewwidth: 1vw;
 
 body {
   font-family: sans-serif;
+  height: 50vh;
   background: url("/assets/images/cassette_smallcopy.jpg");
   background-color: $bg-white;
-  // background-position: top right;
+  background-position: top right;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  nav {
-    font-family: 'Josefin Slab';
-    ul {
-      background-color: $blue;
-      list-style-type: none;
-      // position: relative;
-      // font-size: 0; //get rid of space between li elements
-      .floatRight li {float: right;}
-      .floatLeft li {float: left;}
-      li {
-        box-sizing: border-box;
-        vertical-align: middle;
-        padding: 1vw;
-      }
-      li.navLogo {
-        // padding: 1vw;
-        img {
+  header {
+    nav {
+      font-family: 'Josefin Slab';
+      ul {
+        background-color: $blue;
+        list-style-type: none;
+        // position: relative;
+        // font-size: 0; //get rid of space between li elements
+        .floatRight li {float: right;}
+        .floatLeft li {float: left;}
+        li {
+          box-sizing: border-box;
+          vertical-align: middle;
+          padding: 1vw;
+        }
+        li.navLogo {
+          // padding: 1vw;
+          img {
+            height: 3vw;
+          }
+        }
+        li:not(.navLogo) {
+          // padding: 1vw;
           height: 3vw;
+          a {
+            font-size: 3vw; //font size adjustes with screen width
+            line-height: 4vw;
+            color: $white;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            &:after {
+              content: "";
+              opacity: 0;
+              height: 1px;
+              width: 100%;
+              left: 0;
+              bottom: -5px;
+              position: absolute;
+              // border-radius: 100px;
+              // border: 1px solid $white;
+              background-color: $bg-white;
+              // opacity: 1;
+              transition: opacity 0.5s ease;
+              transition: border-bottom 0.5s ease;
+            }
+            &:hover {
+              border-bottom: 1px solid $white;
+              &:after {
+                opacity: 1;
+              }
+            }
+          }
         }
       }
-      li:not(.navLogo) {
-        // padding: 1vw;
-        height: 3vw;
-        a {
-          font-size: 3vw; //font size adjustes with screen width
-          line-height: 4vw;
-          color: $white;
-          text-transform: uppercase;
-          font-weight: bold;
-          letter-spacing: 1px;
-    //
-    //       &:after {
-    //         content: "";
-    //         opacity: 0;
-    //         height: 1px;
-    //         width: 100%;
-    //         left: 0;
-    //         bottom: -5px;
-    //         position: absolute;
-    //         // border-radius: 100px;
-    //         // border: 1px solid $white;
-    //         background-color: $bg-white;
-    //         // opacity: 1;
-    //         transition: opacity 0.5s ease;
-    //         transition: border-bottom 0.5s ease;
-    //       }
-    //       &:hover {
-    //         // text-decoration: underline;
-    //         border-bottom: 1px solid $white;
-    //         &:after {
-    //           opacity: 1;
-    //         }
-    //       }
-        }
-      }
+    }
+    div.message {
+
     }
   }
 
@@ -136,6 +141,7 @@ body {
   }
 
   main {
+    width: 50vh;
     margin: 0 9vw;
     overflow: hidden;
     // word-wrap: break-word; //for long strings
@@ -315,9 +321,24 @@ body {
       ul {}
     }
     main {
+      padding: 0;
+      margin: 0 auto;
+      width: 90%;
       h1 {
-        padding: 0 20px;
+        // padding: 0 20px;
         text-align: center;
+        &.homepage {
+          font-size: 18vh;
+          padding: 0;
+          // margin-top: -2vh;
+        }
+      }
+      aside {
+        width: 40%;
+      }
+      div.listContainer {
+        width: 50%;
+        // padding: 0;
       }
       div.playlistFolder {
         &:nth-child(n) {
@@ -332,8 +353,27 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   body {
-
+    background-color: $bg-white;
+    background-image: none;
+    main{
+      width: 100%;
+      h1{
+        font-size: 5vh;
+        margin-bottom: 0;
+        &.homepage {
+          font-size: 25vw;
+        }
+      }
+      aside {
+        width: 100%;
+        height: 60vw;
+      }
+      div.listContainer {
+        width: 100%;
+        padding: 10px;
+      }
+    }
   }
 }
