@@ -141,7 +141,7 @@ body {
   }
 
   main {
-    width: 50vh;
+    // width: 100%;
     margin: 0 9vw;
     overflow: hidden;
     // word-wrap: break-word; //for long strings
@@ -161,8 +161,8 @@ body {
         font-weight: 500;
         color: $yellow;
         // text-align: right;
-        margin: 0 auto;
-
+        // margin: 0 auto;
+        width: 100%;
       }
     }
 
