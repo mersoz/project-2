@@ -16,10 +16,6 @@
   <p>
     Created by: <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
   </p>
-  <%#
-    // coverImage
-    // timestamps
-  %>
   <br>
 
 <a href="/playlists/<%= playlist.id %>/play">
@@ -29,7 +25,6 @@
 <div class="listContainer">
   <ul>
     <% playlist.songs.forEach((song) => { %>
-
       <%# <li></%= song %/></li> %>
 
       <li><p><%= song.name %>
@@ -43,11 +38,7 @@
           <input type="hidden" name="_method" value="DELETE">
           <button class="miniButton">Remove song</button>
         </form>
-
       </li>
-
     <% }) %>
   </ul>
 </div>
-
-<%#</%= playlist %/>%>

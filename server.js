@@ -49,17 +49,17 @@ app.use(session({
   saveUninitialized: false
 }));
 
-// Set up flash messages after sessions
+// Flash messages - after sessions
 app.use(flash());
 
-// Set up custom middleware
-app.use(customResponses); // after app and flash, before routes
+// Custom middleware - after app and flash, before routes
+app.use(customResponses);
 app.use(authentication);
 
-// Set up routes - just before error handler
+// Before error handler
 app.use(routes);
 
-// Set up error handler - last piece of middleware before listen
+// Last piece of middleware - before port
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening to port ${port}`));

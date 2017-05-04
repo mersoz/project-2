@@ -45,7 +45,6 @@ function updateRoute(req, res, next) {
   Playlist
     .findById(req.params.id)
     .then((playlist) => {
-      console.log(`Playlist: ${playlist}`); // NULL
       if(!playlist) return res.notFound();
       for(const field in req.body) {
         playlist[field] = req.body[field];
@@ -88,8 +87,8 @@ function newSongRoute(req, res, next) {
     })
     .catch(next);
 }
-// Creates new song inside playlist without url
 
+// Creates new song inside playlist without url
 function createSongRoute(req, res, next) {
   req.body.createdBy = req.user;
 
@@ -102,17 +101,7 @@ function createSongRoute(req, res, next) {
     })
     .then((playlist) => res.redirect(`/playlists/${playlist.id}`))
     .catch(next);
-  // Search API results
 }
-
-// function showSongRoute() {
-//   Playlist
-//     .findById(req.params.id)
-//     .then((playlist) => {
-//       res.render('playlists/show', { playlist });
-//     })
-//     .catch(next);
-// }
 
 function editSongRoute(req, res, next) {
   Playlist
@@ -167,7 +156,6 @@ module.exports = {
 
   newSong: newSongRoute,
   createSong: createSongRoute,
-  // showSong: showSongRoute,
   editSong: editSongRoute,
   updateSong: updateSongRoute,
   deleteSong: deleteSongRoute

@@ -7,6 +7,7 @@ mongoose.connect(dbURI);
 const User = require('../models/user');
 
 User.collection.drop();
+Playlist.collection.drop();
 
 User
   .create([{

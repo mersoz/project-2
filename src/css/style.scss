@@ -11,16 +11,15 @@ $white: #fff;
 $viewheight: 1vh;
 $viewwidth: 1vw;
 
-* { //get rid of whitespace
+* { // To get rid of whitespace
   margin: 0;
   padding: 0;
-  // line-height: 30px;
   color: $green;
   box-sizing: border-box;
 }
 
 .clearfix:after {
-   content: " "; /* Older browser do not support empty content */
+   content: " "; /* Older browsers may not support empty content */
    visibility: hidden;
    display: block;
    height: 0;
@@ -43,8 +42,6 @@ body {
       ul {
         background-color: $blue;
         list-style-type: none;
-        // position: relative;
-        // font-size: 0; //get rid of space between li elements
         .floatRight li {float: right;}
         .floatLeft li {float: left;}
         li {
@@ -52,17 +49,13 @@ body {
           vertical-align: middle;
           padding: 1vw;
         }
-        li.navLogo {
-          // padding: 1vw;
-          img {
-            height: 3vw;
-          }
+        li.navLogo img {
+          height: 3vw;
         }
         li:not(.navLogo) {
-          // padding: 1vw;
           height: 3vw;
           a {
-            font-size: 3vw; //font size adjustes with screen width
+            font-size: 3vw; // Font size adjustes with screen width
             line-height: 4vw;
             color: $white;
             text-transform: uppercase;
@@ -77,10 +70,7 @@ body {
               left: 0;
               bottom: -5px;
               position: absolute;
-              // border-radius: 100px;
-              // border: 1px solid $white;
               background-color: $bg-white;
-              // opacity: 1;
               transition: opacity 0.5s ease;
               transition: border-bottom 0.5s ease;
             }
@@ -94,9 +84,7 @@ body {
         }
       }
     }
-    div.message {
-
-    }
+    div.message {}
   }
 
   button {
@@ -113,14 +101,13 @@ body {
   }
 
   button.center {
-    // text-align: center;
     width: 200px;
     margin-left: auto;
     margin-right: auto;
     background-color: $red;
     border: outset 5px $red;
-
   }
+
   button.miniButton {
     border: none;
     color: $red;
@@ -141,109 +128,76 @@ body {
   }
 
   main {
-    // width: 100%;
     margin: 0 9vw;
     overflow: hidden;
-    // word-wrap: break-word; //for long strings
-
     h1 {
       font-family: 'Monoton';
       font-size: 4vw;
       margin-bottom: 20px;
       color: $purple;
-
       &.homepage {
         font-size: 16vw;
         padding-top: 13vw;
-        // letter-spacing: 10px;
         font-variant: small-caps;
-        // border: solid 1px black;
         font-weight: 500;
         color: $yellow;
-        // text-align: right;
-        // margin: 0 auto;
         width: 100%;
       }
     }
 
     aside {
-      // background-color: teal;
       margin:0;
-
       box-sizing: border-box;
-      // border: 1px solid red;
       float: right;
       width: 27vw;
       height: 16.5vw;
-      // margin-top: vw;
       color: white;
-      // padding-top: 1vw;
       iframe, img {
         box-sizing: border-box;
         height: 100%;
         width: 100%;
       }
-      // &.homepage {
-      //   // background-color: teal;
-      //   box-sizing: border-box;
-      //   // border: 1px solid red;
-      //   margin: 12vh auto 0 auto;
-      //
-      //   width: 28vw;
-      //   height: 17vw;
-      // }
     }
 
     form {
       display: block;
-      // line-height: 100px;
       div {
         margin-bottom: 5px;
         label {
           width: 15%;
           display: inline-block;
           text-align: right;
-          // background: white;
-          // border: solid 1px black;
         }
         input {
           width: 15%;
           border: none;
-          // background-color: $blue;
         }
       }
       button.inFormButton {
         width: 150px;
         width: 15%;
-
       }
     }
 
     div.folderContainer {
       width: 100%;
-      border: 1px solid red;
-      // background-color: white;
     }
 
     div.results {
       padding: 10px;
       width: 100%;
-      // float: right;
       display: block;
       overflow: hidden;
       div {
         width: 100%;
         box-sizing: content-box;
-
         border-top: solid 3px $blue;
         border-bottom: solid 3px $blue;
         margin-bottom: 5px;
-
         background-color: rgba(255, 255, 255, .5);
         img {
           float: left;
           margin-right: 10px;
-          // display: block;
         }
         h4, small {
           float: right;
@@ -256,6 +210,7 @@ body {
         }
       }
     }
+
     div.results * {
       display: inline-block;
     }
@@ -297,7 +252,6 @@ body {
     div.listContainer {
       width: 65%;
       ul {
-        // width: 70%;
         li:not(:last-child) {
           border-bottom: solid 1px $blue;
         }
@@ -317,20 +271,15 @@ body {
 
 @media (max-width: 1000px) {
   body {
-    nav {
-      ul {}
-    }
     main {
       padding: 0;
       margin: 0 auto;
       width: 90%;
       h1 {
-        // padding: 0 20px;
         text-align: center;
         &.homepage {
           font-size: 18vh;
           padding: 0;
-          // margin-top: -2vh;
         }
       }
       aside {
@@ -338,7 +287,6 @@ body {
       }
       div.listContainer {
         width: 50%;
-        // padding: 0;
       }
       div.playlistFolder {
         &:nth-child(n) {

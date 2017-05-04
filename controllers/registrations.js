@@ -1,7 +1,6 @@
 const User = require('../models/user');
 const Playlist = require('../models/playlist');
 
-// Display all users -- WORKS
 function indexRoute(req, res, next) {
   User
     .find()
@@ -9,12 +8,10 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-// Register form -- WORKS
 function newRoute(req, res) {
   return res.render('registrations/new');
 }
 
-// Create new user -- WORKS
 function createRoute(req, res, next) {
   User
     .create(req.body)
@@ -28,7 +25,6 @@ function createRoute(req, res, next) {
     });
 }
 
-// Show user account
 function showRoute(req, res, next) {
   Playlist.find({ createdBy: req.user.id })
     .then((playlists) => {
@@ -37,17 +33,14 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
-// Account edit form
 function editRoute(req, res){
   return res.render('registrations/edit');
 }
 
-// Edit account information
 function updateRoute(req, res, next) {
   User
-    .findById(req.user.id) // instead of req.params.id
+    .findById(req.user.id)
     .then((user) => {
-      console.log(`User: ${user}`); // NULL
       if(!user) return res.notFound();
       for(const field in req.body) {
         user[field] = req.body[field];
@@ -58,7 +51,6 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
-// Delete account
 function deleteRoute(req, res, next) {
   req.user
     .remove()

@@ -34,10 +34,6 @@ router.route('/playlists/:id/songs/new')
   .get(secureRoute, playlists.newSong)
   .post(secureRoute, playlists.createSong);
 
-// router.route('/playlists/:id/songs/:songId/search')
-//   .put(secureRoute, playlists.updateSong)
-//   .get(secureRoute, playlists.editSong);
-
 router.route('/playlists/:id/songs/:songId')
   // .get(playlists.showSong)
   .put(secureRoute, playlists.updateSong)

@@ -9,16 +9,13 @@
 <div>
   <p>Username: <%= user.username %></p>
   <p>Email: <%= user.email %></p>
-  <%# <img src="</%= user.avatar %/>" alt="</%= user.username %/>">%>
   <p>Name: <%= user.name %></p>
-
 </div>
 
 <a href="/playlists/new"><button class="topButton">Create New Playlist</button></a>
 
 <div class="listContainer">
   <ul>
-    <%# get all playlists associated with the user id y%>
     <% playlists.forEach((playlist) => { %>
       <li>
         <p>
@@ -36,10 +33,7 @@
           <input type="hidden" name="_method" value="DELETE">
           <button class="miniButton">Remove playlist</button>
         </form>
-
       </li>
-
     <% }) %>
   </ul>
-
 </div>

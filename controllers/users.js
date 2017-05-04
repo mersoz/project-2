@@ -5,7 +5,6 @@ function showProfile(req, res, next) {
   User
   .findById(req.params.id)
   .then((user) => {
-
     return Playlist.find({ createdBy: user.id })
       .then((playlists) => {
         res.render('users/show', { user, playlists });

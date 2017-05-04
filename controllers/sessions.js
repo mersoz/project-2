@@ -1,11 +1,9 @@
 const User = require('../models/user');
 
-// View login page
 function sessionsNew(req, res) {
   res.render('sessions/new');
 }
 
-// Create session on successful login
 function sessionsCreate(req, res, next) {
   User
     .findOne({ email: req.body.email })
@@ -26,13 +24,11 @@ function sessionsCreate(req, res, next) {
     .catch(next);
 }
 
-// Delete session on logout
 function sessionsDelete(req, res) {
   console.log(`${req.session}`);
   console.log(`${res}`);
   req.session.regenerate(() => res.redirect('/'));
 }
-
 
 module.exports = {
   new: sessionsNew,
