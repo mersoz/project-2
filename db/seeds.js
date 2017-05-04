@@ -5,10 +5,8 @@ mongoose.Promise = require('bluebird');
 mongoose.connect(dbURI);
 
 const User = require('../models/user');
-const Playlist = require('../models/playlist');
 
 User.collection.drop();
-Playlist.collection.drop();
 
 User
   .create([{
