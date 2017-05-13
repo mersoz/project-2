@@ -156,17 +156,23 @@ body {
 
   main {
     height: 87vh;
-    padding: 0 9vw 5vw 9vw;
+    padding: 0 9vw;
     overflow: scroll;
     text-align: center;
     // padding-top: 1%;
 
     background-color: #c7d2bf;
-    // background: url("/assets/images/cassette_smallcopy.jpg");
-    // background-position: bottom right;
-    // background-size: contain;
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
+    div.background {
+      background: url("/assets/images/cassette_smallcopy.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      margin: 0 -9vw;
+      height: 100vh;
+      width: 100vw;
+    }
     h1 {
       overflow: scroll;
       height: 6rem;
@@ -176,10 +182,23 @@ body {
       letter-spacing: 2px;
       color: $purple;
       &.homepage {
+        // padding: 9vw;
+        padding: 0;
+        position: absolute;
+        top: 44vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 16vw;
+        line-height: 16vw;
         font-size: 16vw;
         font-weight: 500;
         color: $yellow;
-        width: 100%;
+        -webkit-box-reflect: below;
+        //  0px -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.3) 0%, transparent 50%, transparent 100%);
+      }
+      &.homepage.mirror {
+        transform: scale(1, -1) translate(-50%, -50%);
+        color: rgba(139, 129, 19, .2)
       }
     }
     h3 {
@@ -236,7 +255,7 @@ body {
     }
     div.folderContainer {
       width: 100%;
-      height: 76vh;
+      height: 70vh;
       overflow: scroll;
     }
 
@@ -274,30 +293,45 @@ body {
     }
 
     div.playlistFolder {
+      float: left;
+      position: relative;
+      box-sizing: border-box;
+      margin: 0 2% 3% 2%;
+      border-radius: 4%;
+      padding-top: 1.3rem;
+      height: 15vw;
+      width: 24vw;
       color: black;
       font-family: 'Homemade Apple';
+
       background: url("/assets/images/cassette_orange.png");
       background-size: contain;
       background-repeat: no-repeat;
       // box-shadow: 10px 10px 15px #000000;
-
-      padding-top: 1.3rem;
-      border-radius: 4%;
-      height: 15vw;
-      box-sizing: border-box;
-      float: left;
-      position: relative;
-      width: 24vw;
-      margin: 0 2% 3% 2%;
       &:nth-child(3n+2) {
         // margin: 0 2%;
       }
       p {
-        margin-top: 2.5rem;
+        margin-top: 2.3rem;
+        line-height: 2rem;
         width: 100%;
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0%);
+        // vertical-align: top;
+        small {
+          vertical-align: top;
+          line-height: 2.5rem;
+          a {
+            vertical-align: top;
+
+            line-height: 2.5rem;
+          }
+        }
+        span {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
       }
       a {
         margin: 0 auto;

@@ -6,7 +6,7 @@
         <a href="/playlists/<%= playlist.id %>" class='playlistFolderTitle'>
           <%= playlist.name %>
         </a><br>
-        <p><small>by <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
+        <p><span><%= playlist.songs.length %></span><small> songs by <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
         </small></p>
     </div>
 <% }) %>
