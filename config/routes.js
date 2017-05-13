@@ -7,9 +7,6 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
-router.get('/search', (req, res) => res.render('songs/search'));
-router.get('/play', (req, res) => res.render('playlists/play2'));
-
 ////////  PLAYLIST ROUTES  ////////
 router.route('/playlists')
   .get(playlists.index);
@@ -35,7 +32,6 @@ router.route('/playlists/:id/songs/new')
   .post(secureRoute, playlists.createSong);
 
 router.route('/playlists/:id/songs/:songId')
-  // .get(playlists.showSong)
   .put(secureRoute, playlists.updateSong)
   .delete(secureRoute, playlists.deleteSong);
 
@@ -46,15 +42,15 @@ router.route('/playlists/:id/songs/:songId/edit')
 router.route('/users')
   .get(secureRoute, registrations.index);
 
+  //vvv EDIT OUT LATER vvv/
 router.route('/account')
-  .get(secureRoute, registrations.show)
+  .get(secureRoute, users.account)
   .put(secureRoute, registrations.update)
   .delete(secureRoute, registrations.delete);
 
 router.route('/account/edit')
   .get(secureRoute, registrations.edit);
 
-//vvv EDIT OUT LATER vvv/
 router.route('/users/:id')
   .get(users.show);
 

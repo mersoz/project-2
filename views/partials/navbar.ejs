@@ -6,19 +6,16 @@
           <img src="/assets/images/musr-logo.png" alt="logo">
         </a>
       </li>
-      <% if(locals.isAuthenticated) { %>
-        <li><a href="/users">Users</a></li>
-      <% } %>
       <li><a href="/playlists">Playlists</a></li>
     </span>
 
     <span class="floatRight">
       <% if(locals.isAuthenticated) { %>
-        <li><a href="/account">My Account</a></li>
         <li><a href="/logout">Logout</a></li>
+        <li><a href="/account">My Account</a></li>
       <% } else { %>
-        <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
       <% } %>
     </span>
 

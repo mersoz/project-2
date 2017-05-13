@@ -1,27 +1,28 @@
 <h1><%= playlist.name %></h1>
+<h3>
+  Created by <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a> on <%= playlist.createdAt.toDateString().substr(4,12) %>
+</h3>
 
-  <a href="/playlists/<%= playlist.id %>/edit"><button class="topButton">Edit playlist information</button></a>
-  <a href="/playlists/<%= playlist.id %>/songs/new"><button class="topButton">Add new song</button></a>
+<% if(locals.isAuthenticated && locals.user.id === playlist.createdBy.id) { %>
+  <a href="/playlists/<%= playlist.id %>/songs/new"><button class="topButton green">Add A Song</button></a>
+  <a href="/playlists/<%= playlist.id %>/edit"><button class="topButton blue">Edit Playlist</button></a>
 
   <form method="POST" action="/playlists/<%= playlist.id %>" class="oneButtonForm">
     <input type="hidden" name="_method" value="DELETE">
-    <button class="topButton">Delete Playlist</button>
+    <button class="topButton red">Delete Playlist</button>
   </form>
+<% } %>
 
-  <p>Num of songs: <%= playlist.songs.length %></p>
-  <p>Private? <%= playlist.private %></p>
-  <p>Tags: <%= playlist.tags %></p>
-  <p>Created on: <%= playlist.createdAt %></p>
-  <p>Last edited: <%= playlist.updatedAt %></p>
-  <p>
-    Created by: <a href="/users/<%= playlist.createdBy.id %>"><%= playlist.createdBy.username %></a>
-  </p>
-  <br>
+<% var songList = []; %>
+<% playlist.songs.forEach((song) => { %>
+  <% songList.push(song.url); %>
+<% }); %>
+<div class="player">
+  <iframe src="https://www.youtube.com/embed?playlist=<%= songList %>" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<a href="/playlists/<%= playlist.id %>/play">
-  <button class="topButton center">Play</button>
-</a>
-<h4>Songs</h4>
+
+<h4 class="listTitle"><%= playlist.songs.length %> Songs</h4>
 <div class="listContainer">
   <ul>
     <% playlist.songs.forEach((song) => { %>
@@ -30,14 +31,16 @@
       <li><p><%= song.name %>
         - <%= song.artist %></p>
 
-        <a href="/playlists/<%= playlist.id %>/songs/<%= song.id %>/edit">
-          <button class="miniButton">Edit song</button>
-        </a>
+        <% if(locals.isAuthenticated && locals.user.id === playlist.createdBy.id) { %>
+          <a href="/playlists/<%= playlist.id %>/songs/<%= song.id %>/edit">
+            <button class="miniButton">Edit song</button>
+          </a>
 
-        <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>" class="oneButtonForm">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="miniButton">Remove song</button>
-        </form>
+          <form method="POST" action="/playlists/<%= playlist.id %>/songs/<%= song.id %>" class="oneButtonForm">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="miniButton">Remove song</button>
+          </form>
+        <% } %>
       </li>
     <% }) %>
   </ul>

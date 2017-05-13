@@ -13,6 +13,20 @@ function showProfile(req, res, next) {
   .catch(next);
 }
 
+function showAccount(req, res, next) {
+  console.log(req.session.userId);
+  User
+  .findById(req.session.userId)
+  .then((user) => {
+    return Playlist.find({ createdBy: user.id })
+      .then((playlists) => {
+        res.render('users/show', { user, playlists });
+      });
+  })
+  .catch(next);
+}
+
 module.exports = {
-  show: showProfile
+  show: showProfile,
+  account: showAccount
 };

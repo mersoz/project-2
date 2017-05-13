@@ -18,6 +18,12 @@ User
   }])
   .then((users) => {
     console.log(`${users.length} users created`);
+
+    // return Playlist
+    //   .create([]);
   })
+  // .then((playlists) => {
+  //   console.log(`${playlists.length} playlists created!`);
+  // })
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());

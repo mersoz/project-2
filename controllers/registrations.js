@@ -25,14 +25,6 @@ function createRoute(req, res, next) {
     });
 }
 
-function showRoute(req, res, next) {
-  Playlist.find({ createdBy: req.user.id })
-    .then((playlists) => {
-      res.render('registrations/show', { playlists });
-    })
-    .catch(next);
-}
-
 function editRoute(req, res){
   return res.render('registrations/edit');
 }
@@ -64,7 +56,6 @@ module.exports = {
   index: indexRoute,
   new: newRoute,
   create: createRoute,
-  show: showRoute,
   edit: editRoute,
   update: updateRoute,
   delete: deleteRoute

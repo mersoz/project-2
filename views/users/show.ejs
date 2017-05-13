@@ -1,13 +1,51 @@
-<h1>User Profile</h1>
+<% if(locals.isAuthenticated && locals.user.id === user.id) { %>
+  <h1>My Account</h1>
+  <a href="/account/edit"><button class="topButton">Edit Account Information</button></a>
 
-<h4>Username: <%= user.username %></h4>
+  <form method="POST" action="/account" class="oneButtonForm">
+  <input type="hidden" name="_method" value="DELETE">
+  <button class="topButton delete">Delete Account</button>
+  </form>
+<% } else { %>
+  <h1>User Profile</h1>
+<% } %>
 
-<h4>Name: <%= user.name %></h4>
 
-<h4>E-mail: <%= user.email %></h4>
+<div class="userInfo">
+  <p><strong>Username:</strong> <%= user.username %></p>
+  <p><strong>Name:</strong> <%= user.name %></p>
+  <p>Email: <%= user.email %></p>
+  <% if(locals.isAuthenticated && locals.user.id === user.id) { %>
+  <% } %>
+</div>
 
-<h4>Playlists</h4>
+<% if(locals.isAuthenticated && locals.user.id === user.id) { %>
+  <a href="/playlists/new"><button class="topButton">Create New Playlist</button></a>
+<% } %>
 
-<h4><%= user.playlists %></h2>
+<h3>Playlists</h3>
+<div class="listContainer">
+  <ul>
+    <% playlists.forEach((playlist) => { %>
+      <li>
+        <p>
+          <a href="/playlists/<%= playlist.id %>" class='playlistFolderTitle'>
+            <%= playlist.name %>
+          (<%= playlist.songs.length %>)
+          </a>
+        </p>
+        <% if(locals.isAuthenticated && locals.user.id === user.id) { %>
 
-<p>User resource details: <%= user %></p>
+        <a href="/playlists/<%= playlist.id %>/edit">
+          <button class="miniButton">Edit playlist</button>
+        </a>
+
+        <form method="POST" action="/playlists/<%= playlist.id %>" class="oneButtonForm">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="miniButton">Remove playlist</button>
+        </form>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+</div>

@@ -1,10 +1,9 @@
 <h1>My Account</h1>
+<a href="/account/edit"><button class="topButton">Edit Account Information</button></a>
 <form method="POST" action="/account" class="oneButtonForm">
   <input type="hidden" name="_method" value="DELETE">
   <button class="topButton delete">Delete Account</button>
 </form>
-
-<a href="/account/edit"><button class="topButton">Edit Account Information</button></a>
 
 <div>
   <p>Username: <%= user.username %></p>

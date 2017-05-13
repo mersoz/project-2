@@ -12,7 +12,6 @@
 <div class="listContainer">
   <ul>
     <% playlist.songs.forEach((song) => { %>
-
       <%# <li></%= song %/></li> %>
 
       <li><p><%= song.name %>
@@ -26,14 +25,7 @@
           <input type="hidden" name="_method" value="DELETE">
           <button class="miniButton">Remove song</button>
         </form>
-
-        <%#
-        // <div class="player">
-        // <iframe width="560" height="315" src="https://www.youtube.com/embed/</%= song.url %/>" frameborder="0" allowfullscreen></iframe>
-        // </div>
-        %>
       </li>
-
     <% }) %>
   </ul>
 </div>
